@@ -10,7 +10,7 @@ The data analysis will be done using **R** and the R front-end **RStudio**.
 
 |Header|Definition|
 |--|--|
-|`ThrowID`|The serial number of the throw, from 00 to 29, inclusive.|
+|`ThrowID`|The serial number of the throw, from 00 to UNDEFINED, inclusive.|
 |`TYPE`|The type of throw, in English, categorical. It includes the options (backhand), (flick), or (hammer).|
 |`TYPENUM`|A numerical encoding of the type of throw, where (0 = backhand), (1 = flick), and (2 = hammer).|
 |`DISC`| The type of disk that was used, in English, categorical. It includes the options (disc) and (frisbee).|
