@@ -19,6 +19,9 @@ library(asbio)
 ## load data
 ## attach a drive with letter T to your computer
 ## instructions and credentials are in the project log
-## TEST READ
-Alcohol <- read.csv("T:/Documents/STATS/datasets/Alcohol.csv")
-View(Alcohol)
+## TEST READ FROM SERVER
+Alcohol <- read.csv("T:/Documents/STATS/datasets/Alcohol.csv") # a test file
+View(Alcohol) # view test file
+## ACTUAL FILE
+#frisbee <- read.csv("T:/Documents/STATS/datasets/frisbee.csv")
+#View(frisbee)
