@@ -20,8 +20,40 @@ library(asbio)
 ## attach a drive with letter T to your computer
 ## instructions and credentials are in the project log
 ## TEST READ FROM SERVER
-Alcohol <- read.csv("T:/Documents/STATS/datasets/Alcohol.csv") # a test file
-View(Alcohol) # view test file
+#Alcohol <- read.csv("T:/Documents/STATS/datasets/Alcohol.csv") # a test file
+#View(Alcohol) # view test file
 ## ACTUAL FILE
-#frisbee <- read.csv("T:/Documents/STATS/datasets/frisbee.csv")
-#View(frisbee)
+discthrows <- read.csv("T:/Documents/STATS/datasets/discthrows.csv")
+View(discthrows)
+############################################################
+
+############################################################
+## do some EDA
+head(discthrows)
+discmod <- lm(TOTALDIST ~ DISC, data = discthrows)
+plot(discmod, c(1:2,4))
+throwmod <- lm(TOTALDIST ~ TYPE, data = discthrows)
+plot(throwmod, c(1:2,4))
+boxplot(TOTALDIST ~ DISC,
+        main = "Boxplot of Distance by Disc Type",
+        xlab = "Disc Type",
+        ylab = "Distance",
+        data = discthrows)
+boxplot(TOTALDIST ~ TYPE,
+        main = "Boxplot of Distance by Throw Type",
+        xlab = "Throw Type",
+        ylab = "Distance",
+        data = discthrows)
+favstats(TOTALDIST ~ DISC, data = discthrows)[c("DISC","mean","sd","n")]
+favstats(TOTALDIST ~ TYPE, data = discthrows)[c("TYPE","mean","sd","n")]
+
+############################################################
+## Construct a Diagnostic Plot for Unequal Variability
+# calculate natural log of group means and sds
+log.grp.means = log(mean(TOTALDIST ~ TYPE, data = discthrows))
+log.grp.sd = log(sd(TOTALDIST ~ TYPE, data = discthrows))
+
+# plot these values
+xyplot(log.grp.sd~log.grp.means, type=c("p","r"))
+(trnsline = lm(log.grp.means~log.grp.sd))
+
