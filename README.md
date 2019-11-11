@@ -1,6 +1,6 @@
 # FRISBEE THROW Readme
 
-This repository contains (or will contain, depending on when you're reading this) the dataset(s) and script(s) to analyze the throwing distance of different types of discs.
+This repository contains the dataset(s) and script(s) to analyze the throwing distance of different types of discs.
 
 This data was compiled by Sejin Kim and Josh Katz (Kenyon College), and includes 30 observations of disc or frisbee throws with different disc types and throw types, including a disc golf disc and a USA Ultimate frisbee, and using the backhand, the flick, and the hammer throws. All data will be collected on 10 November 2019, in order to keep noise due to changing environmental factors, such as humidity or temperature, to a minimum.
 
