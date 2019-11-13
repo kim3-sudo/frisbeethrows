@@ -122,8 +122,10 @@ plot(xtypemod, 1:2)
 (HSD.test(xtypemod, "TYPE")) ## ALSO NEEDS LOOKED AT!
 
 ## run a Welch one-way ANOVA for unequal variances
-oneway.test(XMETERS ~ DISC, data = discthrows)
-oneway.test(XMETERS ~ TYPE, data = discthrows)
+res.aov.disc <- aov(XMETERS ~ DISC, data = discthrows)
+res.aov.type <- aov(XMETERS ~ TYPE, data = discthrows)
+summary(res.aov.disc)
+summary(res.aov.type)
 
 ## run a multiple comparison
 mcdiscanalysis <- glht(xdiscmod, linfct = mcp(DISC = "Tukey"))
