@@ -96,6 +96,12 @@ plot(LSD.test(distancemod, "DISC", group = TRUE, p.adj = "none"))
 plot(LSD.test(distancemod, "TYPE", group = TRUE, p.adj = "none"))
 
 ############################################################
+############################################################
+## MAKING THE MODEL
+realmod <- aov(TOTALDIST ~ DISC + TYPE, data = discthrows)
+summary(realmod)
+reallm <- lm(TOTALDIST ~ DISC + TYPE, data = discthrows)
+summary(reallm)
 
 ############################################################
 ################Evaluating XMETERS!#########################
