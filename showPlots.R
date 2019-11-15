@@ -29,3 +29,5 @@ plot(YMETERS ~ XMETERS,
      xlab = "Absolute Horizontal Displacement (meters)",
      ylab = "Vertical Distance (meters)",
      data = discthrows)
+
+plot()

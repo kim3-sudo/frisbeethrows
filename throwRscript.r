@@ -46,13 +46,20 @@ favstats(TOTALDIST ~ DISC,
 favstats(TOTALDIST ~ TYPE,
         data = discthrows)[c("TYPE","mean","sd","n")]
 ## see if the throw distance was affected by serial number
-plot(TOTALDIST ~ factor(ThrowSN), data = discthrows)
+plot(TOTALDIST ~ ThrowSN,
+     main = "Distance by Throw Number",
+     xlab = "Throw Serial Number",
+     ylab = "Total Distance (meters)",
+     data = discthrows)
 
 ############################################################
 ## Construct an interaction plot for between-term interaction effects
 interaction.plot(discthrows$TOTALDIST,
                  discthrows$TYPENUM,
                  discthrows$DISCNUM,
+                 xlab = "Total Distance",
+                 ylab = "Mean of Disc Number",
+                 main = "Interaction Plot for Distance by Disc Number",
                  col=c(1:2))
 interaction.plot(discthrows$TOTALDIST,
                  discthrows$factor(DISCNUM),
@@ -66,7 +73,10 @@ log.grp.means = log(mean(TOTALDIST ~ TYPE, data = discthrows))
 log.grp.sd = log(sd(TOTALDIST ~ TYPE, data = discthrows))
 
 # plot these values
-xyplot(log.grp.sd~log.grp.means, type=c("p","r"))
+xyplot(log.grp.sd~log.grp.means,
+       main = "Diagnostic Plot for Unequal Variability",
+       sub = "discthrows",
+       type=c("p","r"))
 (trnsline = lm(log.grp.means~log.grp.sd))
 
 ############################################################
