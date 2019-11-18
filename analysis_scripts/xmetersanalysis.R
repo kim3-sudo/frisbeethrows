@@ -35,6 +35,8 @@ xdiscmod <- lm(XMETERS ~ DISC, data = discthrows)
 xtypemod <- lm(XMETERS ~ TYPE, data = discthrows)
 (anova(xdiscmod))
 (anova(xtypemod))
+## two-way ANOVA
+xdifferencemod <- aov(XMETERS ~ DISC * TYPE, data = discthrows)
 ## there's no significant difference in variance within the groups
 summary(xdiscmod)
 summary(xtypemod)
