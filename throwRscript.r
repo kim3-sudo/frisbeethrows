@@ -54,16 +54,19 @@ plot(TOTALDIST ~ ThrowSN,
 
 ############################################################
 ## Construct an interaction plot for between-term interaction effects
-interaction.plot(discthrows$TOTALDIST,
-                 discthrows$TYPENUM,
-                 discthrows$DISCNUM,
-                 xlab = "Total Distance",
-                 ylab = "Mean of Disc Number",
+interaction.plot(discthrows$DISC,
+                 discthrows$TYPE,
+                 discthrows$TOTALDIST,
+                 xlab = "Disc Type",
+                 ylab = "Mean of Total Distance",
                  main = "Interaction Plot for Distance by Disc Number",
                  col=c(1:2))
-interaction.plot(discthrows$TOTALDIST,
-                 discthrows$factor(DISCNUM),
-                 discthrows$factor(TYPENUM),
+interaction.plot(discthrows$TYPE,
+                 discthrows$DISC,
+                 discthrows$TOTALDIST,
+                 xlab = "Throw Type",
+                 ylab = "Mean of Total Distance",
+                 main = "Interaction Plot for Distance by Throw Type",
                  col=c(1:3))
 
 ############################################################
