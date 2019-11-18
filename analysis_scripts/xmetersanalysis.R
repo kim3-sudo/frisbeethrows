@@ -31,24 +31,31 @@ View(discthrows)
 ## could be used to evaluate accuracy
 
 ## one-way ANOVA
-xdiscmod <- lm(XMETERS ~ DISC, data = discthrows)
-xtypemod <- lm(XMETERS ~ TYPE, data = discthrows)
-(anova(xdiscmod))
-(anova(xtypemod))
+#xdiscmod <- lm(XMETERS ~ DISC, data = discthrows)
+#xtypemod <- lm(XMETERS ~ TYPE, data = discthrows)
+#(anova(xdiscmod))
+#(anova(xtypemod))
 ## two-way ANOVA
 xdifferencemod <- aov(XMETERS ~ DISC * TYPE, data = discthrows)
+summary(xdifferencemod)
 ## there's no significant difference in variance within the groups
-summary(xdiscmod)
-summary(xtypemod)
+#summary(xdiscmod)
+#summary(xtypemod)
 ## there IS a significant difference in different types of disc AND different throws, I think
-plot(xdiscmod, 1:2)
-plot(xtypemod, 1:2)
+#################################################
+## CHECK THE CONDITIONS FOR THE ANOVA
+#plot(xdiscmod, 1:2)
+#plot(xtypemod, 1:2)
+plot(xdifferencemod, 1:2)
 ## good nuff
 
 ############################################################
 ## run a Tukey comparison
-(HSD.test(xdiscmod, "DISC")) ## NEEDS LOOKED AT!
-(HSD.test(xtypemod, "TYPE")) ## ALSO NEEDS LOOKED AT!
+#(HSD.test(xdiscmod, "DISC")) ## NEEDS LOOKED AT!
+#(HSD.test(xtypemod, "TYPE")) ## ALSO NEEDS LOOKED AT!
+## This creates our groups
+(HSD.test(xdifferencemod, "DISC"))
+(HSD.test(xdifferencemod, "TYPE"))
 
 ## run a Welch one-way ANOVA for unequal variances
 res.aov.disc <- aov(XMETERS ~ DISC, data = discthrows)
