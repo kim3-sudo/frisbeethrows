@@ -116,3 +116,13 @@ summary(realmod)
 reallm <- lm(TOTALDIST ~ DISC + TYPE, data = discthrows)
 summary(reallm)
 
+## backwards elimination model building
+full=lm(TOTALDIST ~ DISC + TYPE ,data = discthrows)
+MSE=(summary(full)$sigma)^2
+step(full, scale=MSE, direction="backward")
+## forwards elimination
+none=lm(TOTALDIST~1,data=discthrows)
+step(none,scope=list(upper=full),scale=MSE,direction="forward")
+## stepwise
+none=lm(TOTALDIST~1,data=discthrows)
+step(none,scope=list(upper=full),scale=MSE)
