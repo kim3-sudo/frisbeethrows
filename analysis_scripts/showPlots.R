@@ -30,4 +30,8 @@ plot(YMETERS ~ XMETERS,
      ylab = "Vertical Distance (meters)",
      data = discthrows)
 
-plot()
+plot(YYARDS ~ XMETERS,
+     main = "Vertical Distance by Absolute Horizontal Displacement",
+     xlab = "Absolute Horizontal Displacement (meters)",
+     ylab = "Vertical Distance (yards)",
+     data = discthrows)

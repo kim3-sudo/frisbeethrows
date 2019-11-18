@@ -1,0 +1,41 @@
+\documentclass[legalpaper]{article}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{ragged2e}
+\usepackage{hanging}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage[none]{hyphenat}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{pdflscape}
+
+\makeatletter
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\distras}[1]{%
+	\savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+	\savebox{\mysim}{\hbox{$\sim$}}%
+	\mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\makeatother
+
+\begin{document}
+\begin{landscape}
+  \begingroup
+  \Large
+  \begin{equation}
+    Distance = \beta_{0} + \beta_{1}(DISCfrisbee) + \beta_{2}(TYPEflick) + \beta_{3}(TYPEhammer) + \epsilon \distas{iid} N(0,\sigma_{\epsilon})
+  \end{equation}
+  \endgroup
+  
+  \begingroup
+  \Large
+  \begin{equation}
+    \hat{Distance} =  23.454 + 6.090 (DISCfrisbee) + 3.788 (TYPEflick) - 2.756 (TYPEhammer)
+  \end{equation}
+  \endgroup
+  \end{landscape}
+\end{document}
