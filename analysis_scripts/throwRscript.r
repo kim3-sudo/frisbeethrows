@@ -72,8 +72,8 @@ interaction.plot(discthrows$TYPE,
 ############################################################
 ## Construct a Diagnostic Plot for Unequal Variability
 # calculate natural log of group means and sds
-log.grp.means = log(mean(TOTALDIST ~ TYPE, data = discthrows))
-log.grp.sd = log(sd(TOTALDIST ~ TYPE, data = discthrows))
+log.grp.means = log(mean(TOTALDIST ~ TYPE:DISC, data = discthrows))
+log.grp.sd = log(sd(TOTALDIST ~ TYPE:DISC, data = discthrows))
 
 # plot these values
 xyplot(log.grp.sd~log.grp.means,
