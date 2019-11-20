@@ -137,7 +137,16 @@
 		\textbf{IV. Results and the Model}
 	\end{center}
 	\justify
-	
+	Given the above model-building procedures and F-tests, we chose to use the two-way ANOVA model with an interaction term,
+	$$Y_{ij} = \mu + \tau_{i} + \beta_{j} + \gamma{ij} + \epsilon{ijk}$$
+	for $i = 1, 2$, $j = 1, 2, 3$, and $k=1, 2, 3, 4, 5$. In this model, $\tau_{i}$ represents the effect due to the $i$-th level of the disc type, $\beta_{j}$ represents the effect due to the $j$-th level of the throw type, and $\gamma_{ij}$ represents the effect due to any effect between the $i$-th of disc type and $j$-th level of throw type. Because disc type and throw type are predetermined, categorical variables, we are using a fixed-effects model for this analysis.\par
+	As we have shown above, the interaction effect between disc type and throw type is not significant, with a $p$-value of $0.091 > 0.05 = \alpha$, with a $F$-statistic of 2.64 on two degrees of freedom. As a result, we decided to not run a Tukey honest significant difference test. \par
+	We then used the means of the groups to create groups and range plots, shown below. In this analysis, we found that there was a statistically significant difference between using a flick and a hammer, but there was no significant difference between using a flick or a backhand, or between using a backhand and a hammer. We also found that there was a statistically significant difference of means between frisbee throws and disc throws.\par
+	\begin{center}
+    \includegraphics[width=0.8\textwidth]{grouprangethrow.png}
+    \includegraphics[width=0.8\textwidth]{grouprangedisc.png}
+  \end{center}
+  Of course, the expansiveness of this study is questionable; the throwing style that Josh used is unique to him. However, we can make the following conclusions. If we are looking to maximize distance, we should use a flick or a backhand throw, and should use a frisbee. There is no statistically significant difference in the means of the flicks and the means of the backhands. If we are looking to minimize distance, we should use a hammer or a backhand throw, and should use a disc. Again, there is no statistically significant difference in the means of the groups.\par
 	
 	\begin{center}
 		\textbf{V. Further Discussion}
