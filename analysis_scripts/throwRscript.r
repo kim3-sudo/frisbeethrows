@@ -80,7 +80,7 @@ xyplot(log.grp.sd~log.grp.means,
        main = "Diagnostic Plot for Unequal Variability",
        sub = "discthrows",
        type=c("p","r"))
-(trnsline = lm(log.grp.means~log.grp.sd))
+(trnsline = lm(log.grp.sd~log.grp.means))
 
 ############################################################
 ## Construct an overall F-test for the model
