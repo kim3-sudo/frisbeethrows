@@ -80,7 +80,7 @@ xyplot(log.grp.sd~log.grp.means,
        main = "Diagnostic Plot for Unequal Variability",
        sub = "discthrows",
        type=c("p","r"))
-(trnsline = lm(log.grp.means~log.grp.sd))
+(trnsline = lm(log.grp.sd~log.grp.means))
 
 ############################################################
 ## Construct an overall F-test for the model
@@ -92,6 +92,9 @@ anova(fullmod, nullmod)
 plot(fullmod, 1:2)
 leveneTest(discthrows$TOTALDIST, discthrows$DISC:discthrows$TYPE)
         ## a big P-val means we have homoscedasticity :)
+
+mean(resid(fullmod)) # checking zero mean residuals, it's effectively zero 
+
 
 ############################################################
 ## Construct an F-test for two-way interactions
