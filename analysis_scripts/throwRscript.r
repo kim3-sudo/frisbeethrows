@@ -93,6 +93,9 @@ plot(fullmod, 1:2)
 leveneTest(discthrows$TOTALDIST, discthrows$DISC:discthrows$TYPE)
         ## a big P-val means we have homoscedasticity :)
 
+mean(resid(fullmod)) # checking zero mean residuals, it's effectively zero 
+
+
 ############################################################
 ## Construct an F-test for two-way interactions
 distancemod <- aov(TOTALDIST ~ DISC*TYPE, data = discthrows)
