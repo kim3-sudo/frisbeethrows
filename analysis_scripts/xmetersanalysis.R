@@ -29,12 +29,12 @@ favstats(XMETERS~TYPE, data = discthrows) #SD's are a little odd, let's run a di
 favstats(XMETERS~DISC, data = discthrows)
 
 #Diagnostic plot
-log.grp.means = log(mean(XMETERS ~ TYPE:DISC, data = discthrows))
-log.grp.sd = log(sd(XMETERS ~ TYPE:DISC, data = discthrows))
-xyplot(log.grp.sd~log.grp.means,type = c('p','r'))
-trnsline = lm(log.grp.sd~log.grp.means)
-summary(trnsline) #slope estimate is 0.645, let's try a transformation y^1-0.645
-newXMETERS = (discthrows$XMETERS) ^ (1-trnsline$coefficients[2])
+log.grp.meansX = log(mean(XMETERS ~ TYPE:DISC, data = discthrows))
+log.grp.sdX = log(sd(XMETERS ~ TYPE:DISC, data = discthrows))
+xyplot(log.grp.sdX~log.grp.meansX,type = c('p','r'))
+trnslineX = lm(log.grp.sdX~log.grp.meansX)
+summary(trnslineX) #slope estimate is 0.645, let's try a transformation y^1-0.645
+newXMETERS = (discthrows$XMETERS) ^ (1-trnslineX$coefficients[2])
 
 #New EDA
 favstats(newXMETERS~TYPE, data = discthrows) 
