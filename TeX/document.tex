@@ -68,7 +68,7 @@
 		Evaluating Variance in Distance of Disc Throws by Throw Type and Disc Type.
 	\end{center}
 	\begin{center}
-		\textbf{I. Introduction}
+		\textbf{I. Introduction}\par
 	\end{center}
 	\justify
 	%PUT THE TEXT HERE, THIS LIPSUM IS FOR SOME FILLER
@@ -76,7 +76,7 @@
 	We wanted to evaluate the throw distance of different types of throwing discs using two factors:  the type of disc, a disc golf disc (a “disc”), and a standard USA Ultimate frisbee (a “Frisbee”), and the throw type, backhand, flick, and hammer.  Instead of only measuring the vertical displacement, we also thought that certain throws may have an appreciable amount of horizontal displacement. Therefore, we measured each throw in two-dimensional Euclidean Distance, taking into account horizontal displacement as well as vertical distance. Total distance was measured in meters, and do not need normalized, since all measures will be done from the same scale. We expect the data to be roughly normal, if not skewed slightly higher. All throws will be done in approximately the same environmental conditions to minimize unnecessary noise. \par
 
 	\begin{center}
-		\textbf{II. Materials and Procedures}
+		\textbf{II. Materials and Procedures}\par
 	\end{center}
 	\justify
 	In order to explore any variation that might exist, we designed an experiment to find, approximately speaking, the flight distance patterns of the different discs based on the throws. The raw dataset is published as a comma-separated-values spreadsheet on our Github repository. That dataset includes 30 observations of two-dimensional Euclidean distance and the component X and Y distances. Each observation is also marked with the appropriate disc type and throw type. Based on the nature of the data, we decided that no data normalization was needed; that is, we could use the original scale of the data, measured in meters, rather than having to convert the data to a scale of, say, 100. For our main analysis, we will use a two-dimensional Euclidean distance, rounded to the nearest thousandth.\par
@@ -84,16 +84,16 @@
   We performed the experiment on McBride Field to take advantage of the yard line markings for vertical (Y) distance, and measured the horizontal (X) displacement by hand. On the day of testing, the weather was clear, with little to no wind effects.there was minimal wind and minimal fluctuations in temperature, humidity, or wind conditions. Each throw was released from the center of the goal line in the south endzone, thrown as far as possible, and as straight ahead as possible. We were only interested in where each throw landed, not where it rolled to. After each throw landed, its vertical distance was measured according to the yard line markings on the field. The horizontal displacement was measured using a one meter long piece of rope, from one of three “anchor” points, which were the center of the field and the hash marks, located seven meters from the center in either direction.\par
 
 	\begin{center}
-		\textbf{III. Analysis}
+		\textbf{III. Analysis}\par
 	\end{center}
 	\justify
 	All of the statistical analysis was done using R, and using the front-end RStudio. In addition to the functions in base R, we also used functions in the \verb|mosaic|, \verb|pwr|, \verb|agricolae|, \verb|multicomp|, and \verb|car| packages. We ran several different tests for analyses of variance, in order to find the differences between the different discs and the different throw types.\par
 	
 	\begin{center}
-		\textbf{a. Exploring the data graphically}
+		\textbf{a. Exploring the data graphically}\par
 	\end{center}
 	\justify
-	To determine if there is possibly a significant difference in the standard deviations or the means of the different throws, we created two boxplots to visualize the median distances between different types of discs and different throw types. For disc type, variance in both discs look similar, but there does appear to be a difference in means. When looking at the throwtypes, we can see that the distribution and medians of both the flick and the backhand are comparable, but there is a stark difference between these two throws and the hammer throw.\par
+	To determine if there is possibly a significant difference in the standard deviations or the means of the different throws, we created two boxplots to visualize the median distances between different types of discs and different throw types. For disc type, variance in both discs look similar, but there does appear to be a difference in means. When looking at the throw types, we can see that the distribution and medians of both the flick and the backhand are comparable, but there is a stark difference between these two throws and the hammer throw.\par
   \begin{center}
     \includegraphics[width=0.8\textwidth]{boxplotdistdisc.png}
     \includegraphics[width=0.8\textwidth]{boxplotdiststhrow.png}
@@ -104,7 +104,7 @@
   \end{center}
 	
 	\begin{center}
-		\textbf{b. Analysis of variance}
+		\textbf{b. Analysis of variance}\par
 	\end{center}
 	\justify
 	Given the findings in the exploratory data analysis above, we chose to run a two-way analysis of variance to compare the variance between the different types of discs and the different types of throws. We were interested in the interaction between the throw type and the disc type. We suspected that certain discs may impact the distance, based on the throw type. For example, we might have seen that, because a disc golf disc is not designed to be thrown using the hammer, we would see dramatically decreased performance from that disc when thrown using the hammer. An inverse effect might also be present, where a certain disc performs exceptionally well using a certain throw type, or vice versa.\par
@@ -114,12 +114,12 @@
     \includegraphics[width=0.8\textwidth]{interactiondistthrow.png}
   \end{center}
   Based on these plots, we saw it fit to run an interaction analysis, by generating a two way ANOVA table with interaction, using the disc type, the throw type, and the interaction between the disc and throw types. After running the interaction analysis, we found that the interaction effect was not significant with a $F$-value of 2.649 on 2 degrees of freedom and a $p$-value of $0.09 > 0.05 = \alpha$. Given this, we decided that any interaction effect would not be significant. The interaction term between disc type and throw type has been dropped from any further analysis.\par
-  We began our analysis by conducting an overall F-test for the model. To do this, we created an analysis of variance table on the total distance by the disc type and throw type, or the full model. We also created an analysis of variance table of total distance alone, or the null model. We then ran an analysis of variance on the full model against the null model. We found that the overall variance has a F-statistic of 5.3822 on (24, 29) residual degrees of freedom, and a $p$-value of 0.00186. By this, we can conclude that some difference exists between the different factors.\par
+  The next step in our analysis was to conduct an overall F-test for the model. To do this, we created an analysis of variance table on the total distance by the disc type and throw type, or the full model. We also created an analysis of variance table of total distance alone, or the null model. We then ran an analysis of variance on the full model against the null model. We found that the overall variance has a F-statistic of 5.3822 on (24, 29) residual degrees of freedom, and a $p$-value of 0.00186. By this, we can conclude that some difference exists between the different factors.\par
   We then ran a F-test for two-way interactions, using \textit{distance} as the response variable, being predicted by \textit{disc} and \textit{type}. In this, we found that the difference in means of the different disc types was statistically significant, with a F-statistic of 12.095 on one degree of freedom, and a $p$-value of $0.00195 < 0.05 = \alpha$. We also found that the difference in means of the different throw types was statistically significant, with a F-statistic of 4.759 on two degrees of freedom, and a $p$-value of $0.01817 < 0.05 = \alpha$. Like we stated above, we found that the interaction term was not significant at a $\alpha = 0.05$ significance level.\par
   We continued by conducting a F-test for each main effect: disc type and throw type. To do this, we ran Fisher’s least significant difference (“LSD”) test for both disc and throw type. We used no method for adjusting the $p$-values, and we computed the LSD using the analysis of variance table that was used for the F-test for two-way interactions. We then had R group our throw and disc types based on that. We found that there was a statistically significant difference between throwing a flick and a hammer, where flicks are thrown further than hammers. However, there was no difference between backhands and flicks or hammers. We also found that there was a statistically significant difference between using a frisbee and a disc; frisbees are, on average, flew further than discs.\par
 	
 	\begin{center}
-		\textbf{c. Conditions for the ANOVA}
+		\textbf{c. Conditions for the ANOVA}\par
 	\end{center}
 	\justify
 	We chose to run a Levene test to check the condition for equal variance, using the \verb!leveneTest()! function in R. We ran the calculations according to a two-way analysis of variance. In this, we found that with an $F$-value of 1.492 on 5 degrees of freedom, we have a $p$-value of $0.2297 > 0.05 = \alpha$. Based on this, we have no statistical evidence to suggest that the equal variance condition is being violated.\par
@@ -127,6 +127,7 @@
 	\begin{center}
     \includegraphics[width=0.8\textwidth]{resfitthrow.png}
   \end{center}
+  Additionally, in the above residuals versus fitted values plot, we can see that the mean value for all residuals looks to be zero. The same holds true for the mean of each grouping of residuals.\par
   In our normal quantile-quantile plot, we see that the normality condition for an analysis of variance is not perfect, but some uncertainty is to be expected. It is worth noting that tails of the plot looks like it could possibly be fixed by a transformation, but as we tried in section III.a, we could not find an appropriate transformation. We feel comfortable with the level of normality that is presented in this plot.\par
   \begin{center}
     \includegraphics[width=0.8\textwidth]{normalthrow.png}
@@ -134,11 +135,11 @@
   We are confident that our testing methodology and experimental design have satisfied the zero-mean residual condition and the independence condition.\par
 	
 	\begin{center}
-		\textbf{IV. Results and the Model}
+		\textbf{IV. Results and the Model}\par
 	\end{center}
 	\justify
 	Given the above model-building procedures and F-tests, we chose to use the two-way ANOVA model with an interaction term,
-	$$Y_{ij} = \mu + \tau_{i} + \beta_{j} + \gamma_{ij} + \epsilon_{ijk}$$
+	$$Y_{ij} = \mu + \tau_{i} + \beta_{j} + \gamma_{ij} + \epsilon$$
 	for $i = 1, 2$, $j = 1, 2, 3$, and $k=1, 2, 3, 4, 5$. In this model, $\tau_{i}$ represents the effect due to the $i$-th level of the disc type, $\beta_{j}$ represents the effect due to the $j$-th level of the throw type, and $\gamma_{ij}$ represents the effect due to any effect between the $i$-th of disc type and $j$-th level of throw type. Because disc type and throw type are predetermined, categorical variables, we are using a fixed-effects model for this analysis.\par
 	As we have shown above, the interaction effect between disc type and throw type is not significant, with a $p$-value of $0.091 > 0.05 = \alpha$, with a $F$-statistic of 2.64 on two degrees of freedom. As a result, we decided to not run a Tukey honest significant difference test. \par
 	We then used the means of the groups to create groups and range plots, shown below. In this analysis, we found that there was a statistically significant difference between using a flick and a hammer, but there was no significant difference between using a flick or a backhand, or between using a backhand and a hammer. We also found that there was a statistically significant difference of means between frisbee throws and disc throws.\par
@@ -146,10 +147,10 @@
     \includegraphics[width=0.8\textwidth]{grouprangethrow.png}
     \includegraphics[width=0.8\textwidth]{grouprangedisc.png}
   \end{center}
-  Of course, the expansiveness of this study is questionable; the throwing style that Josh used is unique to him. However, we can make the following conclusions. If we are looking to maximize distance, we should use a flick or a backhand throw, and should use a frisbee. There is no statistically significant difference in the means of the flicks and the means of the backhands. If we are looking to minimize distance, we should use a hammer or a backhand throw, and should use a disc. Again, there is no statistically significant difference in the means of the groups.\par
+  Of course, the expansiveness of this study is questionable; Josh’s skill level is certainly not high enough that we could make generalizations about the wider frisbee and disc-throwing population. However, we can make the following conclusions. If we are looking to maximize distance, we should use a flick or a backhand throw, and should use a frisbee. There is no statistically significant difference in the means of the flicks and the means of the backhands. If we are looking to minimize distance, we should use a hammer or a backhand throw, and should use a disc. Again, there is no statistically significant difference in the means of the groups.\par
 	
 	\begin{center}
-		\textbf{V. Further Discussion}
+		\textbf{V. Further Discussion}\par
 	\end{center}
 	\justify
 	As we discussed earlier, our analysis of the data went on a tangent to investigate horizontal displacement. Specifically, we were curious if disc type or throw type affected the horizontal displacement of a throw. Because this tangent is not central to our paper, it will be briefly summarized instead of presenting another full analysis.\par
