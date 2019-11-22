@@ -10,6 +10,8 @@
 \usepackage[none]{hyphenat}
 \usepackage{enumitem}
 \usepackage{amsmath}
+\usepackage{parskip}
+\usepackage{indentfirst}
 
 \makeatletter
 \newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}
@@ -68,15 +70,15 @@
 		Evaluating Variance in Distance of Disc Throws by Throw Type and Disc Type.
 	\end{center}
 	\begin{center}
-		\textbf{I. Introduction}\par
+		\textbf{I. Introduction}
 	\end{center}
 	\justify
 	%PUT THE TEXT HERE, THIS LIPSUM IS FOR SOME FILLER
-	This project was inspired by a curiosity that Josh had: is there a statistically significant difference in the distance that a frisbee would fly, depending on how you threw it? It seems obvious: yes, certain types of throws would go further. But, how could this be quantified? The only “hand-wavey” evidence that either of us had seen was the real-world performance in ultimate frisbee games and practices, but throws in a competitive setting aren’t identical. Each throw is thrown in a specific way; some throws are thrown with more or less curve, some are thrown with higher or lower trajectories, and some are specifically thrown to a spot on the field, instead of a player. However, to best measure distance depending on throw type, we need to have data on discs thrown as hard as possible in a straight line. Additionally, there are different types of discs, too. Disc golf discs are shaped differently, and thus have different flight patterns. Would some significant variance arise from this? Because of this, our group was interested in exploring the variance between the three main types of throws, and between two types of discs. \par
+	\indent This project was inspired by a curiosity that Josh had: is there a statistically significant difference in the distance that a frisbee would fly, depending on how you threw it? It seems obvious: yes, certain types of throws would go further. But, how could this be quantified? The only “hand-wavey” evidence that either of us had seen was the real-world performance in ultimate frisbee games and practices, but throws in a competitive setting aren’t identical. Each throw is thrown in a specific way; some throws are thrown with more or less curve, some are thrown with higher or lower trajectories, and some are specifically thrown to a spot on the field, instead of a player. However, to best measure distance depending on throw type, we need to have data on discs thrown as hard as possible in a straight line. Additionally, there are different types of discs, too. Disc golf discs are shaped differently, and thus have different flight patterns. Would some significant variance arise from this? Because of this, our group was interested in exploring the variance between the three main types of throws, and between two types of discs. \par
 	We wanted to evaluate the throw distance of different types of throwing discs using two factors:  the type of disc, a disc golf disc (a “disc”), and a standard USA Ultimate frisbee (a “Frisbee”), and the throw type, backhand, flick, and hammer.  Instead of only measuring the vertical displacement, we also thought that certain throws may have an appreciable amount of horizontal displacement. Therefore, we measured each throw in two-dimensional Euclidean Distance, taking into account horizontal displacement as well as vertical distance. Total distance was measured in meters, and do not need normalized, since all measures will be done from the same scale. We expect the data to be roughly normal, if not skewed slightly higher. All throws will be done in approximately the same environmental conditions to minimize unnecessary noise. \par
 
 	\begin{center}
-		\textbf{II. Materials and Procedures}\par
+		\textbf{II. Materials and Procedures}
 	\end{center}
 	\justify
 	In order to explore any variation that might exist, we designed an experiment to find, approximately speaking, the flight distance patterns of the different discs based on the throws. The raw dataset is published as a comma-separated-values spreadsheet on our Github repository. That dataset includes 30 observations of two-dimensional Euclidean distance and the component X and Y distances. Each observation is also marked with the appropriate disc type and throw type. Based on the nature of the data, we decided that no data normalization was needed; that is, we could use the original scale of the data, measured in meters, rather than having to convert the data to a scale of, say, 100. For our main analysis, we will use a two-dimensional Euclidean distance, rounded to the nearest thousandth.\par
